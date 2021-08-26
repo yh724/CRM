@@ -498,7 +498,7 @@
         </div>
 
         <div>
-            <a href="transaction/save.jsp" style="text-decoration: none;"><span
+            <a href="workbench/transaction/save.jsp" style="text-decoration: none;"><span
                     class="glyphicon glyphicon-plus"></span>新建交易</a>
         </div>
     </div>

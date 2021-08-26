@@ -143,13 +143,13 @@
         <div class="btn-toolbar" role="toolbar"
              style="background-color: #F7F7F7; height: 50px; position: relative;top: 5px;">
             <div class="btn-group" style="position: relative; top: 18%;">
-                <button type="button" class="btn btn-primary" onclick="window.location.href='saveTask.jsp';"><span
+                <button type="button" class="btn btn-primary" onclick="window.location.href='workbench/visit/saveTask.jsp';"><span
                         class="glyphicon glyphicon-plus"></span> 任务
                 </button>
                 <button type="button" class="btn btn-default" onclick="alert('可以自行实现对通话的管理');"><span
                         class="glyphicon glyphicon-plus"></span> 通话
                 </button>
-                <button type="button" class="btn btn-default" onclick="window.location.href='editTask.html';"><span
+                <button type="button" class="btn btn-default" onclick="window.location.href='workbench/visit/editTask.jsp';"><span
                         class="glyphicon glyphicon-pencil"></span> 修改
                 </button>
                 <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> 删除</button>
@@ -173,7 +173,7 @@
                 <tr>
                     <td><input type="checkbox"/></td>
                     <td><a style="text-decoration: none; cursor: pointer;"
-                           onclick="window.location.href='detail.html';">拜访客户</a></td>
+                           onclick="window.location.href='workbench/visit/detail.jsp';">拜访客户</a></td>
                     <td>2017-07-09</td>
                     <td>李四先生</td>
                     <td>未启动</td>
@@ -183,7 +183,7 @@
                 <tr>
                     <td><input type="checkbox"/></td>
                     <td><a style="text-decoration: none; cursor: pointer;"
-                           onclick="window.location.href='detail.html';">拜访客户</a></td>
+                           onclick="window.location.href='workbench/visit/detail.jsp';">拜访客户</a></td>
                     <td>2017-07-09</td>
                     <td>李四先生</td>
                     <td>未启动</td>
