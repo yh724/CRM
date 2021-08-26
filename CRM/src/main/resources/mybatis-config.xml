@@ -9,6 +9,7 @@
   <typeAliases>
   
   	<package name="cn.edu.hhu.crm.settings.domain"/>
+    <package name="cn.edu.hhu.crm.workbench.domain"/>
     
   </typeAliases>
   
@@ -28,6 +29,7 @@
   <mappers>
     
     <package name="cn.edu.hhu.crm.settings.dao"/>
+    <package name="cn.edu.hhu.crm.workbench.dao"/>
     
   </mappers>
 </configuration>
