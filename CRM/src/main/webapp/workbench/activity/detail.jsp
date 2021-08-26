@@ -52,34 +52,35 @@
                 $(this).children("span").css("color", "#E6E6E6");
             });
 
-            $("#remarkBody").on("mouseover",".remarkDiv",function(){
+            $("#remarkBody").on("mouseover", ".remarkDiv", function () {
                 $(this).children("div").children("div").show();
             })
-            $("#remarkBody").on("mouseout",".remarkDiv",function(){
+            $("#remarkBody").on("mouseout", ".remarkDiv", function () {
                 $(this).children("div").children("div").hide();
             })
 
             $("#saveBtn").click(function () {
                 $.ajax({
-                    url:"workbench/activity/saveRemark.do",
-                    data:{
-                        "noteContent":$.trim($("#remark").val()),
-                        "activityId":"${detailAct.id}"
+                    url: "workbench/activity/saveRemark.do",
+                    data: {
+                        "noteContent": $.trim($("#remark").val()),
+                        "activityId": "${detailAct.id}"
                     },
-                    dataType:"json",
-                    success:function (data) {
+                    dataType: "json",
+                    success: function (data) {
                         /**
                          * data:{"success",true/false,"ar":{ar}}
                          *
                          *
                          * */
-                        if(data.success){
-                           /* var html = '';
-                                html += '<div id="'+data.ar.id+'" class="remarkDiv delFlag" style="height: 60px;">';
-                                html += '<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
-                                html += '<div style="position: relative; top: -40px; left: 40px;">';
-                                html += '<h5 id="n'+data.ar.id+'">'+data.ar.noteContent+'</h5>';
-                                html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${detailAct.name}</b> ';
+                        if (data.success) {
+                            /* var html = '';
+                                 html += '<div id="'+data.ar.id+'" class="remarkDiv delFlag" style="height: 60px;">';
+                                 html += '<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
+                                 html += '<div style="position: relative; top: -40px; left: 40px;">';
+                                 html += '<h5 id="n'+data.ar.id+'">'+data.ar.noteContent+'</h5>';
+                                 html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>
+                            ${detailAct.name}</b> ';
                                 html += '<small style="color: gray;"> '+data.ar.createTime+' 由'+data.ar.createBy+'</small>';
                                 html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;"> ';
                                 html += '<a class="myHref" href="javascript:void(0);" onclick="updateRemark(\''+data.ar.id+'\')"><span class="glyphicon glyphicon-edit"';
@@ -95,38 +96,38 @@
                             remarkList();
                             $("remark").val("添加备注...");
 
-                        }else {
+                        } else {
                             alert("添加备注失败！");
                         }
                     },
-                    type:"post"
+                    type: "post"
                 })
             })
 
             $("#updateRemarkBtn").click(function () {
-                if($("#noteContent").val()==''){
+                if ($("#noteContent").val() == '') {
                     alert("备注信息不能为空！");
-                }else {
+                } else {
                     $.ajax({
-                        url:"workbench/activity/updateRemark.do",
-                        data:{
-                            "id":$("#remarkId").val(),
-                            "noteContent":$.trim($("#noteContent").val())
+                        url: "workbench/activity/updateRemark.do",
+                        data: {
+                            "id": $("#remarkId").val(),
+                            "noteContent": $.trim($("#noteContent").val())
                         },
-                        dataType:"json",
-                        success:function (data) {
+                        dataType: "json",
+                        success: function (data) {
                             /**
                              * data:{"success":true/false}
                              * */
                             debugger
-                          if(data.success){
-                              $(".delFlag").remove();
-                              remarkList();
-                          }else {
-                              alert("更新失败！");
-                          }
+                            if (data.success) {
+                                $(".delFlag").remove();
+                                remarkList();
+                            } else {
+                                alert("更新失败！");
+                            }
                         },
-                        type:"post"
+                        type: "post"
                     })
                     $("#editRemarkModal").modal("hide");
                 }
@@ -137,19 +138,19 @@
         });
 
         function deleteRemark(id) {
-            if(confirm("您确定要删除此项备注吗?")){
+            if (confirm("您确定要删除此项备注吗?")) {
                 $.ajax({
-                    url:"workbench/activity/deleteRemark.do",
-                    data:{"id":id},
-                    dataType:"json",
-                    success:function (data) {
-                        if(data.success){
-                            $("#"+id).remove();
-                        }else {
+                    url: "workbench/activity/deleteRemark.do",
+                    data: {"id": id},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.success) {
+                            $("#" + id).remove();
+                        } else {
                             alert("删除失败！");
                         }
                     },
-                    type:"post"
+                    type: "post"
                 })
             }
         }
@@ -157,33 +158,33 @@
         function updateRemark(id) {
             $("#remarkId").val(id);
             $("#editRemarkModal").modal("show");
-            var noteContent = $("#n"+id).html();
+            var noteContent = $("#n" + id).html();
             $("#noteContent").val(noteContent);
         }
 
         function remarkList() {
             $.ajax({
-                url:"workbench/activity/getRemarkList.do",
-                data:{"id":"${detailAct.id}"},
-                dataType:"json",
-                type:"get",
-                success:function (data) {
+                url: "workbench/activity/getRemarkList.do",
+                data: {"id": "${detailAct.id}"},
+                dataType: "json",
+                type: "get",
+                success: function (data) {
                     /**
                      * data:[{remark1},{remark2}....]
                      * */
                     var html = '';
-                    $.each(data,function (i,n) {
-                        html += '<div id="'+n.id+'" class="remarkDiv delFlag" style="height: 60px;">';
+                    $.each(data, function (i, n) {
+                        html += '<div id="' + n.id + '" class="remarkDiv delFlag" style="height: 60px;">';
                         html += '<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
                         html += '<div style="position: relative; top: -40px; left: 40px;">';
-                        html += '<h5 id="n'+n.id+'">'+n.noteContent+'</h5>';
+                        html += '<h5 id="n' + n.id + '">' + n.noteContent + '</h5>';
                         html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${detailAct.name}</b> ';
-                        html += '<small style="color: gray;"> '+(n.editFlag==1?n.editTime:n.createTime)+' 由'+(n.editFlag==1?n.editBy:n.createBy)+'</small>';
+                        html += '<small style="color: gray;"> ' + (n.editFlag == 1 ? n.editTime : n.createTime) + ' 由' + (n.editFlag == 1 ? n.editBy : n.createBy) + '</small>';
                         html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;"> ';
-                        html += '<a class="myHref" href="javascript:void(0);" onclick="updateRemark(\''+n.id+'\')"><span class="glyphicon glyphicon-edit"';
+                        html += '<a class="myHref" href="javascript:void(0);" onclick="updateRemark(\'' + n.id + '\')"><span class="glyphicon glyphicon-edit"';
                         html += 'style="font-size: 20px; color: #FF0000;"></span></a>';
                         html += '&nbsp;&nbsp;&nbsp;&nbsp;';
-                        html += '<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\''+n.id+'\')"><span class="glyphicon glyphicon-remove"';
+                        html += '<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\'' + n.id + '\')"><span class="glyphicon glyphicon-remove"';
                         html += 'style="font-size: 20px; color: #FF0000;"></span></a>';
                         html += '</div>';
                         html += '</div>';
@@ -341,13 +342,15 @@
     </div>
     <div style="position: relative; left: 40px; height: 30px; top: 30px;">
         <div style="width: 300px; color: gray;">创建者</div>
-        <div style="width: 500px;position: relative; left: 200px; top: -20px;"><b>${detailAct.createBy}&nbsp;&nbsp;</b><small
+        <div style="width: 500px;position: relative; left: 200px; top: -20px;">
+            <b>${detailAct.createBy}&nbsp;&nbsp;</b><small
                 style="font-size: 10px; color: gray;">${detailAct.createTime}</small></div>
         <div style="height: 1px; width: 550px; background: #D5D5D5; position: relative; top: -20px;"></div>
     </div>
     <div style="position: relative; left: 40px; height: 30px; top: 40px;">
         <div style="width: 300px; color: gray;">修改者</div>
-        <div style="width: 500px;position: relative; left: 200px; top: -20px;"><b>${detailAct.editBy}&nbsp;&nbsp;</b><small
+        <div style="width: 500px;position: relative; left: 200px; top: -20px;">
+            <b>${detailAct.editBy}&nbsp;&nbsp;</b><small
                 style="font-size: 10px; color: gray;">${detailAct.editTime}</small></div>
         <div style="height: 1px; width: 550px; background: #D5D5D5; position: relative; top: -20px;"></div>
     </div>
