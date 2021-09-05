@@ -136,7 +136,7 @@
         <div class="btn-toolbar" role="toolbar"
              style="background-color: #F7F7F7; height: 50px; position: relative;top: 10px;">
             <div class="btn-group" style="position: relative; top: 18%;">
-                <button type="button" class="btn btn-primary" onclick="window.location.href='workbench/transaction/save.jsp';"><span
+                <button type="button" class="btn btn-primary" onclick="window.location.href='workbench/trans/add.do';"><span
                         class="glyphicon glyphicon-plus"></span> 创建
                 </button>
                 <button type="button" class="btn btn-default" onclick="window.location.href='workbench/transaction/edit.jsp';"><span
@@ -164,7 +164,7 @@
                 <tbody>
                 <tr>
                     <td><input type="checkbox"/></td>
-                    <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/transaction/detail.jsp';">动力节点-交易01</a>
+                    <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/trans/detail.do?id=510d9cff5f1e4de185c7732bdd9b4a93';">动力节点-交易01</a>
                     </td>
                     <td>动力节点</td>
                     <td>谈判/复审</td>
@@ -175,7 +175,7 @@
                 </tr>
                 <tr class="active">
                     <td><input type="checkbox"/></td>
-                    <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/transaction/detail.jsp';">动力节点-交易01</a>
+                    <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/trans/detail.do?id=073dfd724c0f4b5ba6009b5de271257b';">动力节点-交易01</a>
                     </td>
                     <td>动力节点</td>
                     <td>谈判/复审</td>

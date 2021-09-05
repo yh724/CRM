@@ -116,4 +116,16 @@ public class ActivityServiceImpl implements ActivityService {
         }
         return flag;
     }
+
+    @Override
+    public List<Activity> getUnbundleActivity(String id, String keywords) {
+        List<Activity> aList = activityDao.getUnbundleActivity(id,keywords);
+        return aList;
+    }
+
+    @Override
+    public List<Activity> getActivityByName(String name) {
+        List<Activity> aList = activityDao.getActivityByName(name);
+        return aList;
+    }
 }

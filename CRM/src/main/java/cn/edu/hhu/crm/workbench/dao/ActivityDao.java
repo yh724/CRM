@@ -1,7 +1,7 @@
 package cn.edu.hhu.crm.workbench.dao;
 
-import cn.edu.hhu.crm.vo.PaginationVo;
 import cn.edu.hhu.crm.workbench.domain.Activity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -21,4 +21,9 @@ public interface ActivityDao {
     int updateActivity(Activity activity);
 
     Activity detail(String id);
+
+    List<Activity> getUnbundleActivity(@Param("id") String id,
+                                       @Param("keywords") String keywords);
+
+    List<Activity> getActivityByName(@Param("aName") String name);
 }

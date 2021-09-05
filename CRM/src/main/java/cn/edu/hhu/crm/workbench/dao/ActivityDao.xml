@@ -9,6 +9,49 @@
         select * from tbl_activity where id=#{id}
     </select>
 
+    <select id="getUnbundleActivity" resultType="Activity">
+        select
+        a.id,
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+        from tbl_activity a
+        join tbl_user u
+        on a.owner=u.id
+        <where>
+            <if test="id!=null and id!=''">
+                a.id not in(
+                    select
+                    activityId
+                    from tbl_clue_activity_relation
+                    where
+                    clueId=#{id}
+                )
+            </if>
+            <if test="keywords!=null and keywords!=''">
+                and a.name like '%' #{keywords} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="getActivityByName" resultType="Activity">
+        select
+        a.id,
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+        from tbl_activity a
+        join tbl_user u
+        on a.owner=u.id
+        <where>
+            <if test="aName!=null and aName!=''">
+                and a.name like '%' #{aName} '%'
+            </if>
+        </where>
+    </select>
+
     <insert id="saveActivity">
         insert into tbl_activity values(
             #{id},

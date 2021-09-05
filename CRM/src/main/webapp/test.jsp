@@ -10,12 +10,12 @@
 <body>
 
     $.ajax({
-        url:"/settings/user/login.do",
+        url:"workbench/xxx/xx.do",
         data:{},
         dataType:"json",
-        success:function () {
+        success:function (data) {
 
-        }
+        },
         type:"post"
     })
 
